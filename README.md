@@ -2,4 +2,4 @@
 Championship Tour Rankings app
 
 ## Alpha version
-first pass add presenting ranked athletes
+first pass at presenting ranked athletes
