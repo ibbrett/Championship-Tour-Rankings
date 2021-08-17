@@ -9,9 +9,9 @@ export default function App() {
   const [dataSource, setDataSource] = useState(getInitDataSource());
 
   const renderItem = ({ item }) => (
-    <Athlete 
+    <Athlete
       id={item.id}
-      name={item.name} 
+      name={item.name}
       rank={item.rank}
       country={item.country}
       points={item.points}
