@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, View, FlatList } from 'react-native';
-import { getInitDataSource } from '../utils/data';
+import { StyleSheet, Text, SafeAreaView, View, FlatList, Button } from 'react-native';
+import { getDataSource } from '../utils/data';
 import { colors } from '../utils/colors';
 import { Athlete } from '../components/Athlete';
 import { ItemSeparatorView } from '../components/ItemSeparatorView';
 
 export function Rankings() {
 
-  const [dataSource, setDataSource] = useState(getInitDataSource());
+  const [ dataSource, setDataSource ] = useState(getDataSource(0));
 
   const renderItem = ({ item }) => (
-    <Athlete 
-      name={item.name} 
+    <Athlete
+      name={item.name}
       rank={item.rank}
       country={item.country}
       points={item.points}
@@ -29,14 +29,37 @@ export function Rankings() {
 
   const logo = <View style={styles.header}>
     <View style={styles.logo} />
-    <Text style={[styles.headerLabel, styles.content]}>World Surf League</Text>
+    <Text style={[styles.headerLabel, styles.content]}>WSL Rankings</Text>
   </View>;
+
+  const toggleTabs = ( tab ) => {
+    setDataSource( getDataSource(tab) )
+    // alert(tab);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       {logo}
       <View style={[styles.body, styles.content]}>
-        <Text style={styles.text}>Mens Rankings</Text>
+        <View style={styles.tabs}>
+          <View style={styles.toggleButton}>
+            <Button
+              onPress={() => {toggleTabs(0)}}
+              title="Men"
+              color="orange"
+              accessibilityLabel="Mens Rankings"
+            />
+          </View>
+          <View style={styles.toggleButton}>
+            <Button
+              style={styles.toggleButton}
+              onPress={() => {toggleTabs(1)}}
+              title="Women"
+              color="gray"
+              accessibilityLabel="Womens Rankings"
+            />
+          </View>
+        </View>
         <FlatList
           style={{ backgroundColor: 'white' }}
           data={dataSource}
@@ -63,7 +86,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
-  
+
   body: {
     backgroundColor: addColors ? colors.blue : null,
     //color: addColors ? colors.white : null,
@@ -84,7 +107,7 @@ const styles = StyleSheet.create({
     color: addColors ? colors.white : null,
     flexDirection: 'row',
     // textAlign: 'center',
-    alignItems: 'center', 
+    alignItems: 'center',
     textAlignVertical: 'center'
   },
   headerLabel: {
@@ -103,6 +126,15 @@ const styles = StyleSheet.create({
     padding: 3,
     marginLeft: 10,
     marginRight: 10
+  },
+  tabs: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  toggleButton: {
+    flex:.3,
+    marginRight: 10,
+    // padding: 4
   }
 
 });
