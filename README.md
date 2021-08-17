@@ -9,3 +9,5 @@ enhanced styling for ranked men athletes
 
 ## Gamma version
 add women athlete
+
+![gamma screenshot](/assets/screeshot-gamma.png)
