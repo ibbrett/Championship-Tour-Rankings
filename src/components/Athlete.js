@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { colors } from '../utils/colors';
 
 export const Athlete = ({ id, name, rank, country, points, img, flag }) => {
-  
-  return (  
+
+  return (
     <View style={styles.item} key={id}>
     <View style={styles.left}>
       <View style={styles.athleteRankBorder}>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  
+
   middle: {
     flexDirection: 'column',
     // width: 150,
