@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { colors } from '../utils/colors';
-
 export const Athlete = ({ id, name, rank, country, points, img, flag }) => {
 
   return (
-    <View style={styles.item} key={id}>
+   <View style={styles.item} key={id}>
     <View style={styles.left}>
-      <View style={styles.athleteRankBorder}>
-        <Text style={[styles.athletes, styles.athleteRank]}>{rank}</Text>
+
+    { rank <= 5 ?
+      <View style={[styles.athleteRankBorder, styles.top5]}>
+          <Text style={[styles.athletes, styles.athleteRank]}>{rank}</Text>
       </View>
-    </View>
+    :
+    <View style={[styles.athleteRankBorder]}>
+          <Text style={[styles.athletes, styles.athleteRank]}>{rank}</Text>
+      </View>
+      }
+</View>
 
     <View style={styles.middle}>
       <Text style={[styles.athletes, styles.athleteName]}>{name}</Text>
@@ -40,6 +46,8 @@ export const Athlete = ({ id, name, rank, country, points, img, flag }) => {
   )
 };
 
+const rankSize = 28;
+// const rankBG = 'linear-gradient(red, orange)';
 const addColors = false;
 const styles = StyleSheet.create({
   item: {
@@ -52,19 +60,24 @@ const styles = StyleSheet.create({
     color: addColors ? colors.white : null,
   },
   athleteRankBorder: {
-    backgroundColor: addColors ? colors.silver : 'cyan',
-    width: 30,
-    height: 30,
-    borderRadius: 30 / 2,
+    backgroundColor: colors.rankBG,
+    // background: addColors ? 'cyan' : rankBG,
+    width: rankSize,
+    height: rankSize,
+    borderRadius: rankSize / 2,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
   athleteRank: {
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  top5: {
+    backgroundColor: colors.top5
   },
   athleteName: {
-    fontSize: 15,
+    fontSize: 20,
   },
   athletePoints: {},
   countryMap: {
