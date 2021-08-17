@@ -5,4 +5,7 @@ Championship Tour Rankings app
 first pass at presenting ranked athletes
 
 ## Beta version
-first pass at presenting ranked athletes
+enhanced styling for ranked men athletes
+
+## Gamma version
+add women athlete
